@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import Home from './pages/Home'
 import Play from './pages/Play'
+import CursorBubbles from './components/CursorBubbles'
 
 function getPath() {
   return typeof window !== 'undefined' ? window.location.pathname : '/'
@@ -48,8 +49,12 @@ function App() {
     return () => document.removeEventListener('click', onClick)
   }, [])
 
-  if (path === '/play') return <Play />
-  return <Home />
+  return (
+    <>
+      {path === '/play' ? <Play /> : <Home />}
+      <CursorBubbles />
+    </>
+  )
 }
 
 export default App

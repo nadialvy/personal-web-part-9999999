@@ -7,13 +7,13 @@ const CANVAS_HEIGHT = 28
 // ─── Bell ────────────────────────────────────────────────────────────────
 const BELL_BASE_WIDTH = 16
 const BELL_BASE_HEIGHT = 7
-const PULSE_PERIOD_MS = 3000
+const PULSE_PERIOD_MS = 4500
 
 // ─── Tentacles ───────────────────────────────────────────────────────────
 const TENTACLE_COUNT = 9
 const TENTACLE_LENGTH = 13
 const TENTACLE_WAVELENGTH = 9
-const TENTACLE_WAVE_SPEED = 3
+const TENTACLE_WAVE_SPEED = 1.8
 const TENTACLE_PHASE_GAP = 0.35
 const TENTACLE_HALF_SPREAD = 9
 
@@ -226,7 +226,6 @@ export default function AsciiJellyfish({
 
     let raf = 0
     const start = performance.now()
-    let lastUpdate = 0
     let lastFishTick = performance.now()
 
     const bubbles: Bubble[] = []
@@ -237,26 +236,24 @@ export default function AsciiJellyfish({
     const fish = spawnFish()
 
     function loop(now: number) {
-      if (now - lastUpdate >= 50) {
-        const t = now - start
+      const t = now - start
 
-        const dt = Math.min(0.2, (now - lastFishTick) / 1000)
-        lastFishTick = now
-        updateFish(fish, dt)
+      const dt = Math.min(0.05, (now - lastFishTick) / 1000)
+      lastFishTick = now
+      updateFish(fish, dt)
 
-        for (let i = 0; i < bubbles.length; i++) {
-          const b = bubbles[i]
-          const elapsed = (t - b.spawnT) / 1000
-          if (elapsed > 0 && CANVAS_HEIGHT - elapsed * b.speed < -1) {
-            bubbles[i] = spawnBubble(t)
-          }
+      for (let i = 0; i < bubbles.length; i++) {
+        const b = bubbles[i]
+        const elapsed = (t - b.spawnT) / 1000
+        if (elapsed > 0 && CANVAS_HEIGHT - elapsed * b.speed < -1) {
+          bubbles[i] = spawnBubble(t)
         }
-
-        if (ref.current) {
-          ref.current.textContent = renderJellyfish(t, bubbles, fish)
-        }
-        lastUpdate = now
       }
+
+      if (ref.current) {
+        ref.current.textContent = renderJellyfish(t, bubbles, fish)
+      }
+
       raf = requestAnimationFrame(loop)
     }
 

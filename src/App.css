@@ -1,3 +1,87 @@
+/* ===== Cursor bubbles (global, follow the cursor on every page) ======== */
+/* The system cursor is hidden globally — the bubbles ARE the cursor. */
+*,
+*::before,
+*::after {
+  cursor: none !important;
+}
+
+:root {
+  --cursor-x: -100px;
+  --cursor-y: -100px;
+}
+
+.cursor-bubbles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 100;
+}
+
+/* The "head" bubble — pinned exactly to the pointer for zero-lag tracking.
+   Updated via CSS variables on every pointermove. */
+.cursor-head {
+  position: fixed;
+  left: var(--cursor-x);
+  top: var(--cursor-y);
+  transform: translate(-50%, -50%);
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  line-height: 1;
+  color: oklch(92% 0.13 200);
+  text-shadow:
+    0 0 6px oklch(82% 0.15 200 / 0.65),
+    0 0 16px oklch(68% 0.13 198 / 0.40);
+  user-select: none;
+  pointer-events: none;
+  will-change: left, top;
+}
+
+.cursor-bubble {
+  position: absolute;
+  font-family: var(--font-mono);
+  line-height: 1;
+  color: oklch(86% 0.10 200);
+  text-shadow:
+    0 0 6px oklch(78% 0.14 200 / 0.55),
+    0 0 14px oklch(64% 0.12 198 / 0.30);
+  user-select: none;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transform: translate(-50%, -50%);
+  animation: cursor-bubble-rise var(--cb-dur, 1800ms)
+    cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes cursor-bubble-rise {
+  from {
+    transform: translate(-50%, -50%);
+    opacity: 0.78;
+  }
+  18% {
+    opacity: 0.85;
+  }
+  to {
+    transform: translate(
+      calc(-50% + var(--cb-dx, 0px)),
+      calc(-50% - var(--cb-rise, 100px))
+    );
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    cursor: revert !important;
+  }
+  .cursor-bubbles {
+    display: none;
+  }
+}
+
 /* ===== Utility ========================================================== */
 .visually-hidden {
   position: absolute;
