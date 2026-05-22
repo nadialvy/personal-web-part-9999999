@@ -35,20 +35,22 @@
 
 /* ===== Tokens =========================================================== */
 :root {
-  /* Color — warm paper with a fanta-pink accent. All OKLCH. */
-  --paper:       oklch(96.8% 0.008 80);
-  --paper-deep:  oklch(93.5% 0.010 80);
-  --paper-soft:  oklch(89%   0.012 80);
-  --rule:        oklch(82%   0.012 80);
-  --ink-mute:    oklch(55%   0.014 80);
-  --ink:         oklch(20%   0.012 80);
-  --ink-deep:    oklch(12%   0.010 80);
-  --accent:      oklch(64%   0.220 2);
-  --accent-deep: oklch(52%   0.200 2);
-  --slab:        oklch(16%   0.008 80);
-  --slab-soft:   oklch(30%   0.008 80);
-  --slab-mute:   oklch(60%   0.008 80);
-  --slab-ink:    oklch(94%   0.008 80);
+  /* Color — deep sea palette with a bioluminescent fanta-pink accent. All OKLCH.
+     Dark navy-blue at multiple depths, pale moonlight text, single warm
+     pink accent that reads as a glowing creature against the dark water. */
+  --paper:       oklch(14%   0.040 230);
+  --paper-deep:  oklch(20%   0.045 228);
+  --paper-soft:  oklch(26%   0.050 226);
+  --rule:        oklch(38%   0.040 222);
+  --ink-mute:    oklch(60%   0.045 212);
+  --ink:         oklch(82%   0.035 198);
+  --ink-deep:    oklch(94%   0.040 192);
+  --accent:      oklch(68%   0.215 5);
+  --accent-deep: oklch(56%   0.195 5);
+  --slab:        oklch(6%    0.030 232);
+  --slab-soft:   oklch(22%   0.035 228);
+  --slab-mute:   oklch(54%   0.045 218);
+  --slab-ink:    oklch(90%   0.040 200);
 
   /* Type families */
   --font-display: 'PP Neue Montreal', 'Inter Tight', system-ui, sans-serif;
@@ -75,7 +77,7 @@
   /* Motion */
   --ease-out-quart: cubic-bezier(0.22, 1, 0.36, 1);
 
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 /* ===== Reset ============================================================ */

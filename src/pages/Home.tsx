@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import type { CSSProperties } from 'react'
 import { useReveal } from '../hooks/useReveal'
 import { useCyclingPhrase } from '../hooks/useCyclingPhrase'
+import AsciiJellyfish from '../components/AsciiJellyfish'
 
 const WORK: ReadonlyArray<{
   n: string
@@ -147,10 +148,8 @@ function Hero() {
       className={`hero ${revealed ? 'is-revealed' : ''}`}
       aria-labelledby="hero-title"
     >
-      <div className="hero-rose-backdrop" aria-hidden="true">
-        <div className="hero-rose-spin">
-          <CompassRose />
-        </div>
+      <div className="hero-sea-backdrop" aria-hidden="true">
+        <AsciiJellyfish className="hero-sea" ariaLabel="" />
       </div>
       <h1 id="hero-title" className="hero-display">
         <span className="hero-line rise-mask">

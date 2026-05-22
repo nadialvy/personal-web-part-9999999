@@ -191,17 +191,15 @@
   isolation: isolate;
 }
 
-.hero-rose-backdrop {
+.hero-sea-backdrop {
   position: absolute;
-  right: -10vw;
+  right: -7vw;
   top: 50%;
-  width: clamp(22rem, 78vmin, 56rem);
-  height: clamp(22rem, 78vmin, 56rem);
   pointer-events: none;
   user-select: none;
   z-index: 0;
   opacity: 0;
-  scale: 0.88;
+  scale: 0.94;
   transform: translateY(-50%)
     translate3d(
       calc(var(--pmx, 0) * -14px),
@@ -211,34 +209,32 @@
   will-change: transform, opacity, scale;
 }
 
-.hero.is-revealed .hero-rose-backdrop {
-  animation: rose-backdrop-in 1800ms var(--ease-out-quart) 280ms forwards;
+.hero.is-revealed .hero-sea-backdrop {
+  animation: hero-sea-in 1800ms var(--ease-out-quart) 280ms forwards;
 }
 
-@keyframes rose-backdrop-in {
+@keyframes hero-sea-in {
   to {
-    opacity: 0.45;
+    opacity: 0.65;
     scale: 1;
   }
 }
 
-.hero-rose-spin {
-  width: 100%;
-  height: 100%;
-  color: oklch(72% 0.18 5);
-  animation: rose-drift 180s linear infinite;
-  transform-origin: center;
-}
-
-.hero-rose-spin svg {
-  width: 100%;
-  height: 100%;
-}
-
-@keyframes rose-drift {
-  to {
-    transform: rotate(360deg);
-  }
+.hero-sea {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: clamp(0.8rem, 1.8vw, 1.56rem);
+  line-height: 1.12;
+  letter-spacing: 0;
+  color: oklch(82% 0.08 200);
+  text-shadow:
+    0 0 5px oklch(75% 0.13 200 / 0.4),
+    0 0 14px oklch(64% 0.12 198 / 0.25),
+    0 0 32px oklch(54% 0.09 195 / 0.16);
+  white-space: pre;
+  user-select: none;
+  font-variant-ligatures: none;
+  -webkit-font-smoothing: antialiased;
 }
 
 .hero-display {

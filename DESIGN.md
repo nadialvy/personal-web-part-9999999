@@ -2,7 +2,7 @@
 
 Design system for the editorial-brutalist register defined in [PRODUCT.md](./PRODUCT.md), tuned against three saved references: Mike (warm cream, illustration, italic-emphasis), Zwinkle (display-sans + photo grid + numbered indices), and Luxespace (one decisive accent, ornament marks, asymmetric collage).
 
-Direction is locked: warm-paper neutrals, **fanta-pink accent**, PP Neue Montreal + PP Editorial New italic, compass-rose ornament, count-down N-index, bio-first home.
+Direction is locked: **deep-sea palette** (dark navy-blue at multiple depths, pale moonlight text), **fanta-pink accent** that reads as a bioluminescent creature against the dark water, PP Neue Montreal + PP Editorial New italic, compass-rose ornament, count-down N-index, bio-first home.
 
 ## The signature move
 
@@ -23,27 +23,33 @@ Drop either of these and the site collapses back into the trope. Hold them acros
 
 ## Color
 
-**Strategy: Committed.** One fanta-pink accent owns 8–12% of any given page, plus warm-paper neutrals and a near-black ink. The accent is unmissable when it appears, and the rest of the surface stays out of its way. The choice of pink (over the saturated orange the references default to) is itself a trope-breaker — orange-on-cream is the awwwards 2024–25 reflex; warm pink in the same role is rarer and more identifiable.
+**Strategy: Committed.** A deep-sea palette: dark navy-blue at multiple depths for surfaces, pale moonlight blue-teal for text, and a single fanta-pink accent that reads as a bioluminescent creature drifting through dark water. The accent owns 8–12% of any given page; the rest stays luminous-pale or sinks toward the deep. Choosing pink (over a more obvious deep-sea cyan or sea-foam green) keeps the brand identifiable and avoids the saturated-teal-on-navy trope.
 
 All color in OKLCH. Chroma drops near the lightness extremes.
 
 ```css
-/* Neutrals — warm paper. Every value tints toward 80° hue. */
---paper:        oklch(96.8% 0.008 80);   /* page background, off-white with warmth */
---paper-deep:   oklch(93.5% 0.010 80);   /* secondary surfaces, asides */
---paper-soft:   oklch(89%   0.012 80);   /* hairline-section blocks, photo gutters */
---rule:         oklch(82%   0.012 80);   /* dividers */
---ink-mute:     oklch(55%   0.014 80);   /* captions, meta, index labels */
---ink:          oklch(20%   0.012 80);   /* body text, near-black, warm */
---ink-deep:     oklch(12%   0.010 80);   /* display headings */
+/* Surfaces — depths of the same hue (~230°), getting darker / lighter
+   together. The page reads as one layer of water, not a stack of cards. */
+--paper:        oklch(14%   0.040 230);   /* page background, mid-deep water */
+--paper-deep:   oklch(20%   0.045 228);   /* lifted surface (hover, asides) */
+--paper-soft:   oklch(26%   0.050 226);   /* tertiary surfaces */
+--rule:         oklch(38%   0.040 222);   /* hairline dividers */
+--ink-mute:     oklch(60%   0.045 212);   /* captions, meta, index labels */
+--ink:          oklch(82%   0.035 198);   /* body text, pale moonlight */
+--ink-deep:     oklch(94%   0.040 192);   /* display headings, brightest */
 
-/* Accent — fanta pink. Saturated, candy-pop, leaning warm. Used decisively, never decoratively. */
---accent:        oklch(64%   0.220 2);   /* primary accent */
---accent-deep:   oklch(52%   0.200 2);   /* hover / pressed state */
+/* Accent — fanta pink. Saturated, candy-pop, with the chroma nudged up
+   slightly (and a touch brighter than its light-theme value) for contrast
+   against the deep paper. Reads as a glowing creature, never decorative. */
+--accent:        oklch(68%   0.215 5);    /* primary accent */
+--accent-deep:   oklch(56%   0.195 5);    /* hover / pressed state */
 
-/* Black slab — the closer. Footer surface only. */
---slab:          oklch(16%   0.008 80);
---slab-ink:      oklch(94%   0.008 80);
+/* Slab — the deepest layer, used for the footer closer. Even darker than
+   the page, so the slab feels like sinking another fathom on scroll. */
+--slab:          oklch(6%    0.030 232);
+--slab-soft:     oklch(22%   0.035 228);
+--slab-mute:     oklch(54%   0.045 218);
+--slab-ink:      oklch(90%   0.040 200);
 ```
 
 ### Where the accent is allowed
@@ -63,7 +69,7 @@ All color in OKLCH. Chroma drops near the lightness extremes.
 
 ## Theme
 
-**Light, committed.** The scene: someone reads this in a bright room in the middle of an afternoon, on a laptop or a phone held in good light. The page is paper. A dark theme is not on the roadmap for v1; if added later it inverts the lightness scale, never the hue.
+**Dark, committed. Deep sea.** The scene: someone opens this late in the evening, lights low in the room, the screen the brightest thing in the space. The page reads as dark water with a luminous creature drifting in it. Not "dark mode" as a toggle, not "dark because dev portfolios are dark." A specific, owned darkness: navy-blue with a hint of teal, paired with one warm bioluminescent accent. A light theme is not on the roadmap.
 
 ## Typography
 
