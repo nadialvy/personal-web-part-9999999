@@ -1,0 +1,153 @@
+/* ===== Fonts ============================================================ */
+/* PP Neue Montreal + PP Editorial New are Pangram Pangram fonts, free for
+   personal use. Drop the .woff2 files into /public/fonts/ — see
+   /public/fonts/README.md for instructions. Until they exist, the system
+   stack below is used. */
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('/fonts/PPNeueMontreal-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('/fonts/PPNeueMontreal-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('/fonts/PPNeueMontreal-Bold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('/fonts/PPEditorialNew-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ===== Tokens =========================================================== */
+:root {
+  /* Color — warm paper with a fanta-pink accent. All OKLCH. */
+  --paper:       oklch(96.8% 0.008 80);
+  --paper-deep:  oklch(93.5% 0.010 80);
+  --paper-soft:  oklch(89%   0.012 80);
+  --rule:        oklch(82%   0.012 80);
+  --ink-mute:    oklch(55%   0.014 80);
+  --ink:         oklch(20%   0.012 80);
+  --ink-deep:    oklch(12%   0.010 80);
+  --accent:      oklch(64%   0.220 2);
+  --accent-deep: oklch(52%   0.200 2);
+  --slab:        oklch(16%   0.008 80);
+  --slab-soft:   oklch(30%   0.008 80);
+  --slab-mute:   oklch(60%   0.008 80);
+  --slab-ink:    oklch(94%   0.008 80);
+
+  /* Type families */
+  --font-display: 'PP Neue Montreal', 'Inter Tight', system-ui, sans-serif;
+  --font-body:    'PP Neue Montreal', 'Inter', system-ui, sans-serif;
+  --font-italic:  'PP Editorial New', 'EB Garamond', Georgia, serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Type scale */
+  --text-2xs:  0.6875rem;
+  --text-xs:   0.8125rem;
+  --text-sm:   0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg:   1.3125rem;
+  --text-xl:   1.75rem;
+  --text-2xl:  2.5rem;
+  --text-3xl:  3.75rem;
+  --text-4xl:  5.5rem;
+  --text-5xl:  8rem;
+
+  /* Spacing */
+  --gutter-x:  clamp(1.25rem, 4vw, 4rem);
+  --section-y: clamp(3.5rem, 8vw, 6rem);
+
+  /* Motion */
+  --ease-out-quart: cubic-bezier(0.22, 1, 0.36, 1);
+
+  color-scheme: light;
+}
+
+/* ===== Reset ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+  min-height: 100vh;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ol,
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
